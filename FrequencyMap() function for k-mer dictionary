@@ -1,0 +1,19 @@
+# Insert your completed FrequencyMap() function here.
+def FrequencyMap(Text, k):
+    freq = {} #defines empty dictionary for the frequency map
+    n = len(Text) #length of DNA fragment
+    
+    for i in range(n-k+1): #loop each element in a range from the length of the string "DNA fragment" up until the last possible value                           
+                           #(the length minus the length of the k-mer fragment) plus 1 because of 0-indexing
+        Pattern = Text[i:i+k] #takes each snippet of length k moving along 1 letter at a time as a possible 'Pattern'
+        freq[Pattern] = 0 #assigns value in dictionary of pattern initially to 0
+    
+    #first pass to get all possible patterns
+    
+    for i in range(n-k+1): #second pass to check matches
+        Test = Text[i:i+k] #test for match condition
+        for Pattern in freq:  #loop across all patterns
+            if Pattern == Test: 
+                freq[Pattern] += 1 #update count of given Pattern in Frequency Map      
+    return freq
+
