@@ -1,0 +1,52 @@
+def FrequentWords(Text, k):
+    # List of words (for the final answer) 
+    words = []
+    # We are calling the 2nd function inside the 1st function to obtain the word frequency map
+    freq = FrequencyMap(Text, k)
+    # The "max()" function will return the highest number among the values of the map, we need that to determine which words we need to print in our final answer
+    m = max(freq.values())
+    # Loop through each key of the map
+    
+    # Here is how the map looks like at this point:
+    # {'ACGT': 1, 'CGTT': 1, 'GTTG': 1, 'TTGC': 1, 'TGCA': 2, 'GCAT': 3, 'CATG': 3, 'ATGT': 1, 'TGTC': 1, 'GTCG': 1, 'TCGC': 1, 'CGCA': 1, 'ATGA': 2, 'TGAT': 1, 'GATG': 1, 'ATGC': 1, 'TGAG': 1, 'GAGA': 1, 'AGAG': 1, 'GAGC': 1, 'AGCT': 1}
+    
+    # The keys GCAT and CATG have 3 occurrences in the overall Text ACGTTGCATGTCGCATGATGCATGAGAGCT
+    # Therefore, these two are the ones that have the highest frequency (most repetitions) across the text
+    
+    for key in freq:
+        # We need to include only the words whose frequency match the maximum, so here is the condition for that
+        if freq[key] == m:
+            # Adding the key (pattern / sequence of character with the highest frequency) into the "words" list
+            words.append(key)
+    return words
+
+def FrequencyMap(Text, k):
+    freq = {}
+    # adding k to this "pattern_length" variable just for readability purposes
+    pattern_length = k
+    
+    # Let us loop through each index of the list of characters that comprise the Text
+    for i in range(len(Text)):
+        # This time, instead of looking for a pre-determined pattern as in previous exercises
+        # The pattern will MUTATE as we shift from left to right and keep running a verification of the frequency
+        # of each k-set of characters moving through the indices of the Text, one-by-one, from left to right 
+        # For example:
+          # if Text = ACGTTGCATGTCGCATGATGCATGAGAGCT and k = 4
+          # in the first iteration, the Pattern will be ACGT (the first 4 characters)
+          # in the second iteration, the Pattern will be CGTT (the next 4 characters, skipping the index 0 as we are now on index 1)
+          # and so on...
+        Pattern = Text[i:i+pattern_length]
+        # initialize the counter for this pattern in the dictionary (aka: Map)
+          # in the first iteration, the Map will look like this {'ACGT': 0 }
+          # in the second iteration, the Map will look like this {'ACGT': 0, 'CGTT': 0 }
+          # and so on...
+        freq[Pattern] = 0
+        
+        # Now we have an inner loop (nested loops) so we can run the frequency check for each pattern (This is basiclly the same rationale from the previous exercise, the only difference is that we are now acting upon a mutating pattern)
+        for j in range(len(Text)):
+            # Increment the counter if the pattern matches the slides string based on the square bracket + colon notation (that is used to obtain a fragment of the Text based on a syntax like Text[<start_index>:<end_index>])
+            if Pattern == Text[j:j+pattern_length]:
+                freq[Pattern] += 1
+    return freq
+
+# print( FrequencyMap("ACGTTGCATGTCGCATGATGCATGAGAGCT", 4) )
