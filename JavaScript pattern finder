@@ -1,0 +1,28 @@
+Made it on JavaScript (node.js). 
+
+let ori = "CGATATATCCATAG";
+let pattern = "ATA";
+let repetetive = 0, pseudorepetetive = 0;
+
+// pseudorepetetive is variable that counts how many nucleotydes of ori is exactly the same as in pattern in the row (line 11). 
+// So if the pseudorepetetive is the same as length of pattern (line 19), repetetive increments (line 20)
+
+for(let i=0; i<ori.length; i++){
+    for(let j = 0; j<pattern.length; j++){
+        if(ori[i+j]==pattern[j]){
+            pseudorepetetive ++;
+        }
+        else {
+            pseudorepetetive = 0;
+            break;
+        }
+    }
+
+    if(pseudorepetetive == pattern.length){
+        repetetive++;
+        //i+=pattern.length; // apply it if for exemple "ATATA" MUST COUNT AS ONE reapeat of the pattern "ATA",
+
+//not two with spare 3rd letter "A"
+    }
+}
+console.log(repetetive);
