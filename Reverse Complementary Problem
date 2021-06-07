@@ -1,0 +1,13 @@
+def ReversedComplement(Pattern):
+
+    Pattern = Reverse(Pattern)
+
+#Right here you would use a function, that you will soon make, to change the value of "Pattern" to its reversed
+
+    Pattern = Complement(Pattern)
+
+#Then use another function to change the now reverse of "Pattern" into its complement
+
+    return Pattern
+
+#And here you finally return the reversed and complemented value of "Pattern"
