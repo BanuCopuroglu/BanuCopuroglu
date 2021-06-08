@@ -11,3 +11,26 @@ def ReversedComplement(Pattern):
     return Pattern
 
 #And here you finally return the reversed and complemented value of "Pattern"
+
+--------------------------------------------------------------------------------------------------------------------------
+
+# Input:  A DNA string Pattern
+# Output: The reverse complement of Pattern
+def ReverseComplement(Pattern):   
+    # your code here
+    Pattern = Reverse(Pattern)
+    Pattern = Complement(Pattern)
+    return Pattern
+    
+# Copy your Reverse() function here.
+def Reverse(Pattern):
+    # your code here
+    rev = ""
+    for i in Pattern:
+        rev = i + rev
+    return rev
+# Copy your Complement() function here.
+def Complement(Pattern):
+    return(Pattern.replace("A","t").replace("T","a").replace("G","c").replace("C","g").upper())
+    
+    --------------------------------------------------------------------------------------------------------------------------
