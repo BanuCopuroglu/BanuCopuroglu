@@ -1,5 +1,3 @@
-Solution:
-
 def PatternMatching(Pattern, Genome):
     positions = [ ] # output variable
     for i in range(len(Genome)-len(Pattern)+1):
