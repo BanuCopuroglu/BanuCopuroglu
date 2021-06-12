@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @BanuCopuroglu
 - 👀 I’m interested in ... Bioinformatic & Python
 - 🌱 I’m currently learning ... Basic bioinformatic 
-- 💞️ I’m looking to collaborate on ...
+- 💞️ I’m looking to collaborate on ... http://rosalind.info/users/banucopuroglu/
 - 📫 How to reach me ... https://www.linkedin.com/in/banu-%C3%A7opuro%C4%9Flu/
 
 <!---
