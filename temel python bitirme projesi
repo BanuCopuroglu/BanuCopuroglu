@@ -2,8 +2,23 @@
 #Bir listeyi düzleştiren (flatten) fonksiyon yazın. Elemanları birden çok katmanlı listtlerden ([[3],2] gibi) oluşabileceği gibi, 
 #non-scalar verilerden de oluşabilir. Örnek olarak:
 #  input: [[1,'a',['cat'],2],[[[3]],'dog'],4,5]
-flatten_item = []
-def flatten(x):
+def flattenList(nestedList):
+    # check if list is empty
+    if not (bool(nestedList)):
+        return nestedList
+    # to check instance of list is empty or not
+    if type(nestedList[0]) == list:
+        # call function with sublist as argument
+        return flattenList(*nestedList[:1]) + flattenList(nestedList[1:])
+    # call function with sublist as argument
+    return nestedList[:1] + flattenList(nestedList[1:])
+
+
+# Driver Code
+nestedList = [[["cat"], 2], [[[3]], "dog"], [4, 5]]
+print("Nested List:\n", nestedList)
+
+print("Flattened List:\n", flattenList(nestedList))
   
 
 
@@ -13,7 +28,24 @@ def flatten(x):
 #Eğer listenin içindeki elemanlar da liste içeriyorsa onların elemanlarını da tersine döndürün. 
 #Örnek olarak:
   #input: [[1, 2], [3, 4], [5, 6, 7]]
+mylist = [[1, 2], [3, 4], [5, 6, 7]]
 
+
+def is_list(p):
+    return isinstance(p, list)
+
+
+def deep_reverse(mylist):
+    result = []
+    for e in mylist:
+        if isinstance(e, list):
+            result.append(deep_reverse(e))
+        else:
+            result.append(e)
+    result.reverse()
+    return result
+
+print(deep_reverse(mylist))
   #output: [[[7, 6, 5], [4, 3], [2, 1]]
 
 
