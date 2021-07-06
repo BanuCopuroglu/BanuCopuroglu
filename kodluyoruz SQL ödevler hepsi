@@ -360,6 +360,6 @@ WHERE replacement_cost =
 --4. payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
 SELECT Count(customer) AS customer_max FROM payment
 WHERE amount = 
-(SELECT MAX(amount) FROM film
+(SELECT MAX(amount) FROM payment
 )
 
